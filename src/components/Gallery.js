@@ -3,11 +3,25 @@ import { Card } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux'
 import axios from 'axios';
 import { setPhotos } from '../redux/actions/actions'
+import { Link } from "react-router-dom";
 
 const Gallery = () => {
 
-  const photos = useSelector(state => state)
+  const photos = useSelector(state => state.photos.photos)
   const dispatch = useDispatch()
+
+  const renderPhotos = photos.map(photo => {
+    const { id, url } = photo;
+    return (
+      <div>
+        <Link to={`/photo/${id}`}>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={url} />
+          </Card>
+        </Link>
+      </div>
+    )
+  })
 
   const fetchPhotos = async () => {
     const response = await axios
@@ -26,9 +40,7 @@ const Gallery = () => {
 
   return (
     <div>
-       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://mirpozitiva.ru/wp-content/uploads/2019/11/1472042492_01-1568x980.jpg" />
-      </Card>
+      {renderPhotos}
     </div>
   );
 };
