@@ -3,8 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { selectedPhotos } from '../redux/actions/actions';
-import { Button } from 'react-bootstrap';
-// import SingleCard from '../components/SingleCard';
+import { Spinner } from 'react-bootstrap';
 import FullInfoCard from '../components/FullInfoCard';
 
 
@@ -30,16 +29,20 @@ const PhotoItem = () => {
   }
 
   useEffect(() => {
-    fetchPhotoItem()
+    setTimeout(() => fetchPhotoItem(), 1500);
   }, [])
 
   return (
     <div>
-      <FullInfoCard
-        id={id}
-        url={url}
-        goBack={goBack}
-        title={title} />
+      {Object.keys(photo).length === 0 ? (
+        <Spinner style={{ marginTop: '100px' }} animation="grow" />
+      ) : (
+        <FullInfoCard
+          id={id}
+          url={url}
+          goBack={goBack}
+          title={title} />
+      )}
     </div>
   );
 };

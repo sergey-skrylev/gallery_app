@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Spinner } from 'react-bootstrap';
 
 const FullInfoCard = ({ id, url, title, goBack}) => {
   return (
@@ -11,7 +11,7 @@ const FullInfoCard = ({ id, url, title, goBack}) => {
           <Card.Text>
            "{title}""
           </Card.Text>
-          <Button variant="primary" onClick={goBack}>GO BACK</Button>
+          <Button variant="dark" onClick={goBack}>GO BACK</Button>
         </Card.Body>
       </Card>
     </div>

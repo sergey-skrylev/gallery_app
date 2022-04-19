@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setPhotos } from '../redux/actions/actions';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import SingleCard from '../components/SingleCard';
-import {Row, Col } from 'react-bootstrap';
+import { Row, Col, Card, Spinner } from 'react-bootstrap';
 
 const Gallery = () => {
 
@@ -21,20 +20,26 @@ const Gallery = () => {
   }
 
   useEffect(() => {
-    fetchPhotos()
+    setTimeout(() => fetchPhotos(), 2000);
   }, [])
 
   return (
     <div>
-      <Row>
-        {photos.map(photo =>
-          <Col md={2}>
-            <Link to={`/photos/${photo.id}`}>
-              <SingleCard url={photo.url} />
-            </Link>
-          </Col>
-        )}
-      </Row>
+      {Object.keys(photos).length === 0 ? (
+        <Spinner style={{ marginTop: '100px' }} animation="grow" />
+      ) : (
+        <Row>
+          {photos.map(photo =>
+            <Col md={2}>
+              <Link to={`/photos/${photo.id}`}>
+                <Card border="dark" style={{ width: '18rem' }}>
+                  <Card.Img variant="top" src={photo.url} />
+                </Card>
+              </Link>
+            </Col>
+          )}
+        </Row>
+      )}
     </div>
   );
 };
