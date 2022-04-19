@@ -4,22 +4,12 @@ import { setPhotos } from '../redux/actions/actions';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import SingleCard from '../components/SingleCard';
+import {Row, Col } from 'react-bootstrap';
 
 const Gallery = () => {
 
-  const photos = useSelector(state => state.allPhotos.photos);
   const dispatch = useDispatch();
-
-  const renderPhotos = photos.map(photo => {
-    const { id, url } = photo;
-    return (
-      <div>
-        <Link to={`/photos/${id}`}>
-          <SingleCard url={url} />
-        </Link>
-      </div>
-    )
-  })
+  const photos = useSelector(state => state.allPhotos.photos);
 
   const fetchPhotos = async () => {
     const response = await axios
@@ -34,11 +24,17 @@ const Gallery = () => {
     fetchPhotos()
   }, [])
 
-  // console.log(photos);
-
   return (
     <div>
-      {renderPhotos}
+      <Row>
+        {photos.map(photo =>
+          <Col md={2}>
+            <Link to={`/photos/${photo.id}`}>
+              <SingleCard url={photo.url} />
+            </Link>
+          </Col>
+        )}
+      </Row>
     </div>
   );
 };

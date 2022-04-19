@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { selectedPhotos } from '../redux/actions/actions';
 import { Button } from 'react-bootstrap';
-import SingleCard from '../components/SingleCard';
+// import SingleCard from '../components/SingleCard';
+import FullInfoCard from '../components/FullInfoCard';
+
 
 const PhotoItem = () => {
 
@@ -33,12 +35,11 @@ const PhotoItem = () => {
 
   return (
     <div>
-      <div>
-        <h4>Photo ID: "{id}"</h4>
-        <h4>Photo title: "{title}"</h4>
-      </div>
-      <SingleCard url={url} />
-      <Button variant="success" onClick={goBack}>GO BACK</Button>{' '}
+      <FullInfoCard
+        id={id}
+        url={url}
+        goBack={goBack}
+        title={title} />
     </div>
   );
 };

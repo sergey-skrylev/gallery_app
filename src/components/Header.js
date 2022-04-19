@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Container, Navbar, NavDropdown, Nav,Image } from 'react-bootstrap';
 
 const Header = () => {
   return (
@@ -17,6 +17,12 @@ const Header = () => {
                 >
                   <NavDropdown.Item href="/">Gallery</NavDropdown.Item>
                   <NavDropdown.Item href="/aboutme">About Me</NavDropdown.Item>
+                  <br/>
+                  <NavDropdown.Item href="/aboutme"><Image 
+                  src='https://avatars.githubusercontent.com/u/59506155?v=4'
+                  rounded
+                  height={36}/> Sergey Skrylev</NavDropdown.Item>
+                  <NavDropdown.Item>sergey.s1991@yandex.ru</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
