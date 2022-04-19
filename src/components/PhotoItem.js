@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { selectedPhotos } from '../redux/actions/actions';
-import SingleCard  from '../components/SingleCard';
+import { Button } from 'react-bootstrap';
+import SingleCard from '../components/SingleCard';
 
 const PhotoItem = () => {
 
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-
   const photo = useSelector((state) => state.selectedPhoto);
   const { title, url } = photo;
 
+  const goBack = () => { // go back button
+    navigate(-1)
+  }
 
   const fetchPhotoItem = async () => {
     const response = await axios
@@ -29,11 +33,12 @@ const PhotoItem = () => {
 
   return (
     <div>
-      Uniq Photo
-      {id}
-      <br />
-      {title}
-      <SingleCard url={url}/>
+      <div>
+        <h4>Photo ID: "{id}"</h4>
+        <h4>Photo title: "{title}"</h4>
+      </div>
+      <SingleCard url={url} />
+      <Button variant="success" onClick={goBack}>GO BACK</Button>{' '}
     </div>
   );
 };
