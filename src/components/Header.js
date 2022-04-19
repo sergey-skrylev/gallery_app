@@ -5,9 +5,8 @@ const Header = () => {
   return (
     <>
       <div>
-        <Navbar variant="dark" bg="dark" expand="lg">
+        <Navbar variant="dark" bg="primary" expand="lg">
           <Container fluid>
-            <Navbar.Brand href="#home">My Gallery</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbar-dark-example" />
             <Navbar.Collapse id="navbar-dark-example">
               <Nav>
@@ -21,6 +20,7 @@ const Header = () => {
                 </NavDropdown>
               </Nav>
             </Navbar.Collapse>
+            <Navbar.Brand href="/">My Gallery</Navbar.Brand>
           </Container>
         </Navbar>
       </div>

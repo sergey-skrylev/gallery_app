@@ -1,23 +1,21 @@
 import React, { useEffect } from 'react';
-import { Card } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
-import axios from 'axios';
-import { setPhotos } from '../redux/actions/actions'
+import { useSelector, useDispatch } from 'react-redux';
+import { setPhotos } from '../redux/actions/actions';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import SingleCard from '../components/SingleCard';
 
 const Gallery = () => {
 
-  const photos = useSelector(state => state.photos.photos)
-  const dispatch = useDispatch()
+  const photos = useSelector(state => state.allPhotos.photos);
+  const dispatch = useDispatch();
 
   const renderPhotos = photos.map(photo => {
     const { id, url } = photo;
     return (
       <div>
-        <Link to={`/photo/${id}`}>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={url} />
-          </Card>
+        <Link to={`/photos/${id}`}>
+          <SingleCard url={url} />
         </Link>
       </div>
     )
@@ -36,7 +34,7 @@ const Gallery = () => {
     fetchPhotos()
   }, [])
 
-  console.log(photos);
+  // console.log(photos);
 
   return (
     <div>
