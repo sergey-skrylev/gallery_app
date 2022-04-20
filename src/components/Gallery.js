@@ -13,6 +13,8 @@ const Gallery = () => {
     setTimeout(() => dispatch(getPhotos()), 1000);
   }, [dispatch])
 
+  console.log(photos);
+  
   return (
     <div>
       {Object.keys(photos).length === 0 ? (

@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -26,5 +27,15 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.block-container {
+  border: 1px solid black;
+  margin: 60px;
+  font-size: 18px;
+}
+
+header {
+  margin-top: 60px;
 }
 

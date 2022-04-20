@@ -23,7 +23,7 @@ const PhotoItem = () => {
 
   // const fetchPhotoItem = async () => {
   //   const response = await axios
-  //     .get(urlId)
+  //     .get(`https://jsonplaceholder.typicode.com/photos/${id}`)
   //     .catch((err) => {
   //       console.error('Error', err)
   //     })
