@@ -39,3 +39,38 @@ header {
   margin-top: 60px;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container {
+  position: relative;
+}
+
+.middle{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.card-container:hover .image {
+  opacity: 50%;
+}
+
+.card-container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  padding: 16px 38px;
+  border-radius: 10px;
+}

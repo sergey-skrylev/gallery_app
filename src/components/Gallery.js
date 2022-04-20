@@ -13,10 +13,8 @@ const Gallery = () => {
     setTimeout(() => dispatch(getPhotos()), 1000);
   }, [dispatch])
 
-  console.log(photos);
-  
   return (
-    <div>
+    <div style={{ margin: '40px' }}>
       {Object.keys(photos).length === 0 ? (
         <Spinner style={{ marginTop: '100px' }} animation="grow" />
       ) : (
@@ -24,9 +22,16 @@ const Gallery = () => {
           {photos.map(photo =>
             <Col key={photo.id} md={2}>
               <Link to={`/photos/${photo.id}`}>
-                <Card border="dark" style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src={photo.url} />
-                </Card>
+                <div className="card-container">
+
+                  <Card className="image" border="dark" style={{ maxWidth: '100%', marginBottom: '20px' }}>
+                    <Card.Img variant="top" src={photo.url} />
+                  </Card>
+
+                  <div class="middle">
+                    <div class="text">OPEN</div>
+                  </div>
+                </div>
               </Link>
             </Col>
           )}

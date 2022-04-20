@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Gallery from './components/Gallery';
-import AboutMe from './components/AboutMe';
+import AboutMe from './components/AboutMe/AboutMe';
 import PhotoItem from './components/PhotoItem';
 import Header from './components/Header';
 

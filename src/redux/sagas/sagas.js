@@ -14,16 +14,16 @@ const fetchPhotos = async () => {
 
 // для выбранного фото
 
-// возникли сложности с передачей id в сагу, поэтому захардкодил '1' и оставил в компоненте PhotoItem правильный вариант без саги
+// возникли сложности с передачей id в сагу, поэтому оставил подгрузку отдельной фото в компоненте
 
-const fetchPhotoItem = async () => {
-  const response = await axios
-    .get(`https://jsonplaceholder.typicode.com/photos/${1}`)
-    .catch((err) => {
-      console.error('Error', err)
-    })
-  return response.data
-}
+// const fetchPhotoItem = async () => {
+//   const response = await axios
+//     .get(`https://jsonplaceholder.typicode.com/photos/${1}`)
+//     .catch((err) => {
+//       console.error('Error', err)
+//     })
+//   return response.data
+// }
 
 // для всех фото
 function* workerGetFetchPhotos() {
@@ -32,15 +32,15 @@ function* workerGetFetchPhotos() {
 }
 
 // для выбранного фото
-function* workerGetFetchSelectedPhoto() {
-  const photo = yield call(fetchPhotoItem)
-  yield put({ type: ActionTypes.GET_SELECTED_PHOTO_SUCCESS, payload: photo })
-}
+// function* workerGetFetchSelectedPhoto() {
+//   const photo = yield call(fetchPhotoItem)
+//   yield put({ type: ActionTypes.GET_SELECTED_PHOTO_SUCCESS, payload: photo })
+// }
 
-// Сага-наблюдатель
+// наблюдатель
 function* watchActions() {
   yield takeEvery(ActionTypes.GET_PHOTOS, workerGetFetchPhotos);
-  yield takeEvery(ActionTypes.GET_SELECTED_PHOTO, workerGetFetchSelectedPhoto);
+  // yield takeEvery(ActionTypes.GET_SELECTED_PHOTO, workerGetFetchSelectedPhoto);
 }
 
 export default watchActions;

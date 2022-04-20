@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const FullInfoCard = ({ id, url, title, goBack }) => {
   return (
-    <div>
+    <div style={{ marginTop: '6%', marginLeft: '42%'}}>
       <Card border="dark" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={url} />
         <Card.Body>
