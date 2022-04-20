@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { selectedPhotos } from '../redux/actions/actions';
+// import axios from 'axios';
+import { getSelectedPhoto } from '../redux/actions/actions';
 import { Spinner } from 'react-bootstrap';
 import FullInfoCard from '../components/FullInfoCard';
 
@@ -19,18 +19,24 @@ const PhotoItem = () => {
     navigate(-1)
   }
 
-  const fetchPhotoItem = async () => {
-    const response = await axios
-      .get(`https://jsonplaceholder.typicode.com/photos/${id}`)
-      .catch((err) => {
-        console.error('Error', err)
-      })
-    dispatch(selectedPhotos(response.data))
-  }
+  const urlId = `https://jsonplaceholder.typicode.com/photos/${id}`
+
+  // const fetchPhotoItem = async () => {
+  //   const response = await axios
+  //     .get(urlId)
+  //     .catch((err) => {
+  //       console.error('Error', err)
+  //     })
+  //   dispatch(selectedPhotos(response.data))
+  // }
+
+  // useEffect(() => {
+  //   setTimeout(() => fetchPhotoItem(), 1500);
+  // }, [])
 
   useEffect(() => {
-    setTimeout(() => fetchPhotoItem(), 1500);
-  }, [])
+    setTimeout(() => dispatch(getSelectedPhoto()), 300);
+  }, [dispatch])
 
   return (
     <div>

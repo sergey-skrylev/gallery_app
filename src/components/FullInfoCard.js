@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Button, Spinner } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 
-const FullInfoCard = ({ id, url, title, goBack}) => {
+const FullInfoCard = ({ id, url, title, goBack }) => {
   return (
     <div>
       <Card border="dark" style={{ width: '18rem' }}>
@@ -9,7 +9,7 @@ const FullInfoCard = ({ id, url, title, goBack}) => {
         <Card.Body>
           <Card.Title>Card ID: {id}</Card.Title>
           <Card.Text>
-           "{title}""
+            "{title}"
           </Card.Text>
           <Button variant="dark" onClick={goBack}>GO BACK</Button>
         </Card.Body>

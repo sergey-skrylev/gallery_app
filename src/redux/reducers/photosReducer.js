@@ -6,8 +6,10 @@ const initialState = {
 
 export const photosReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case ActionTypes.SET_PHOTOS:
-      return { ...state, photos: payload }
+    case ActionTypes.GET_PHOTOS_SUCCESS:
+      return {
+        ...state, photos: payload
+      };
     default:
       return state
   }
@@ -15,8 +17,11 @@ export const photosReducer = (state = initialState, { type, payload }) => {
 
 export const selectPhotoReducer = (state = {}, { type, payload }) => {
   switch (type) {
-    case ActionTypes.SELECTED_PHOTO:
-      return { ...state, ...payload };
-    default: return state
+    case ActionTypes.GET_SELECTED_PHOTO_SUCCESS:
+      return {
+        ...state, ...payload
+      };
+    default:
+      return state
   }
 }
