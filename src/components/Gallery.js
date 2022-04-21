@@ -10,7 +10,7 @@ const Gallery = () => {
   const photos = useSelector(state => state.allPhotos.photos);
 
   useEffect(() => {
-    setTimeout(() => dispatch(getPhotos()), 1000);
+    setTimeout(() => dispatch(getPhotos()), 500);
   }, [dispatch])
 
   return (
@@ -28,8 +28,8 @@ const Gallery = () => {
                     <Card.Img variant="top" src={photo.url} />
                   </Card>
 
-                  <div class="middle">
-                    <div class="text">OPEN</div>
+                  <div className="middle">
+                    <div className="text">OPEN</div>
                   </div>
                 </div>
               </Link>

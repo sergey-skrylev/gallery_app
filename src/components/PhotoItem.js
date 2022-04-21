@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -19,18 +19,18 @@ const PhotoItem = () => {
     navigate(-1)
   }
 
-  const fetchPhotoItem = async () => {
+  const fetchPhotoItem = useCallback(async () => {
     const response = await axios
       .get(`https://jsonplaceholder.typicode.com/photos/${id}`)
       .catch((err) => {
         console.error('Error', err)
       })
     dispatch(getSelectedPhotoSuccess(response.data))
-  }
+  }, [dispatch, id])
 
   useEffect(() => {
-    setTimeout(() => fetchPhotoItem(), 1500);
-  }, [])
+    setTimeout(() => fetchPhotoItem(), 500);
+  }, [fetchPhotoItem])
 
   // для саги
 
