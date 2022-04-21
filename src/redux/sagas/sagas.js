@@ -5,7 +5,7 @@ import axios from 'axios';
 // для всех фото
 const fetchPhotos = async () => {
   const response = await axios
-    .get('https://jsonplaceholder.typicode.com/photos?_start=0&_limit=24')
+    .get('http://jsonplaceholder.typicode.com/photos?_start=0&_limit=24')
     .catch((err) => {
       console.log('error', err);
     })

@@ -5,10 +5,10 @@ import photo from './photo.jpeg'
 const AboutMe = () => {
   return (
     <>
-    <header>
-      <h1>Сергей Скрылев</h1>
-      <h3>Frontend разработчик</h3> 
-    </header>
+      <header>
+        <h1>Сергей Скрылев</h1>
+        <h3>Frontend разработчик</h3>
+      </header>
       <div className="container">
         <Image style={{ marginTop: '60px' }} height='500px' src={photo} />
         <Accordion className="block-container" defaultActiveKey="0" alwaysOpen>
